@@ -1,9 +1,40 @@
+@font-face {
+  font-family: 'gg sans';
+  src: url('/fonts/gg sans Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'gg sans';
+  src: url('/fonts/gg sans Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'gg sans';
+  src: url('/fonts/gg sans Semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'gg sans';
+  src: url('/fonts/gg sans Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
   margin: 0;
   font-family:
-    "gg sans", "Apple SD Gothic Neo", NanumBarunGothic, "맑은 고딕", "Malgun Gothic", Gulim, 굴림, Dotum, 돋움, "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif
+    'gg sans', 'Apple SD Gothic Neo', NanumBarunGothic, '맑은 고딕', 'Malgun Gothic', Gulim, 굴림, Dotum, 돋움,
+    'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-
