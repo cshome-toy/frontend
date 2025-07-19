@@ -22,3 +22,11 @@ export const headerContent = style({
   gap: vars.spacing.lg,
   color: vars.colors.subDark,
 });
+
+export const headerImage = style({
+  width: '20px',
+  height: '20px',
+  borderRadius: vars.radius.sm,
+  objectFit: 'cover',
+  objectPosition: 'center',
+});

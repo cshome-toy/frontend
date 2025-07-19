@@ -23,3 +23,21 @@ export const userInfoImage = style({
   height: '40px',
   borderRadius: '100%',
 });
+
+export const userInfoContent = style({
+  display: 'flex',
+  flexDirection: 'column',
+  color: vars.colors.sub,
+  fontWeight: vars.font.weight.semibold,
+});
+
+export const userInfoContentName = style({
+  fontSize: vars.font.size.md,
+  fontWeight: vars.font.weight.semibold,
+});
+
+export const userInfoContentEmail = style({
+  fontSize: vars.font.size.sm,
+  color: vars.colors.subDark,
+  fontWeight: vars.font.weight.medium,
+});

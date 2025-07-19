@@ -13,6 +13,26 @@ export const sideBar = style({
   gap: vars.spacing.md,
 });
 
+export const sideBarButtonWrapper = style({
+  width: '100%',
+  height: '40px',
+  display: 'grid',
+  placeItems: 'center',
+  position: 'relative',
+});
+
+export const sideBarActiveIndicator = style({
+  width: '4px',
+  height: 'var(--indicator-height, 0px)',
+  backgroundColor: vars.colors.white,
+  borderRadius: vars.radius.lg,
+  position: 'absolute',
+  top: '50%',
+  left: '0px',
+  transform: 'translateY(-50%)',
+  transition: 'height 0.2s ease-in-out',
+});
+
 export const sideBarButton = style({
   width: '40px',
   height: '40px',
@@ -27,4 +47,21 @@ export const sideBarButton = style({
   ':hover': {
     backgroundColor: vars.colors.point,
   },
+  overflow: 'hidden',
+  position: 'relative',
+});
+
+export const sideBarSeparator = style({
+  width: '38px',
+  height: '1px',
+  backgroundColor: vars.colors.mainBorder,
+});
+
+export const sideBarButtonImage = style({
+  position: 'absolute',
+  inset: 0,
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover',
+  objectPosition: 'center',
 });
