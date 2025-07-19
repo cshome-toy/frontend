@@ -2,10 +2,27 @@
 > KGU CSHOME Internship toy project
 
 
-
 - 배포 URL : 
 - Test ID : 
-- Test PW : 
+- Test PW :
+
+<br>
+
+## Commit Convention
+
+| 타입 | 설명 | 예시 |
+|------|------|------|
+| `feat` | 새로운 기능 추가 | `feat : 로그인 기능 추가` |
+| `fix` | 버그 수정 | `fix : 로그인 시 비밀번호 오류 수정` |
+| `docs` | 문서 수정 | `docs : README 업데이트` |
+| `design` | 코드 스타일 변경 (포매팅, 세미콜론 등) | `design : prettier 적용` |
+| `refactor` | 코드 리팩토링 (기능 변화 없음) | `refactor : 컴포넌트 구조 개선` |
+| `test` | 테스트 코드 추가/수정 | `test : 유닛 테스트 추가` |
+| `chore` | 빌드/배포/패키지 관리 등 기타 작업 | `chore : 의존성 패키지 업데이트` |
+| `perf` | 성능 개선 | `perf : 렌더링 최적화` |
+| `ci` | CI 설정 변경 | `ci : GitHub Actions 수정` |
+| `build` | 빌드 관련 파일 수정 | `build : webpack 설정 변경` |
+| `revert` | 커밋 되돌리기 | `revert : 로그인 기능 롤백` |
 
 <br>
 
