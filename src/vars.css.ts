@@ -15,8 +15,12 @@ export const vars = createGlobalTheme('#app', {
     pointLight: '#91A0F5',
     pointBorder: '#6771EC',
     pointHover: '#4654C0',
+    pointFocus: '#7AB0F5',
   },
   font: {
+    family: {
+      primary: '"gg sans", sans-serif',
+    },
     size: {
       xs: '12px',
       sm: '14px',
@@ -30,6 +34,12 @@ export const vars = createGlobalTheme('#app', {
       '6xl': '40px',
       '7xl': '44px',
       '8xl': '48px',
+    },
+    weight: {
+      normal: '400',
+      medium: '500',
+      semibold: '600',
+      bold: '700',
     },
   },
   radius: {
