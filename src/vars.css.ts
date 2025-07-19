@@ -48,4 +48,13 @@ export const vars = createGlobalTheme('#app', {
     lg: '12px',
     xl: '16px',
   },
+  spacing: {
+    xs: '4px',
+    sm: '8px',
+    md: '16px',
+    ml: '20px',
+    lg: '24px',
+    xl: '32px',
+    bottom: '10px',
+  },
 });

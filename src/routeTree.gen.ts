@@ -9,50 +9,128 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as HomeLayoutRouteImport } from './routes/_homeLayout'
+import { Route as HomeLayoutIndexRouteImport } from './routes/_homeLayout/index'
+import { Route as HomeLayoutServerTitleRouteImport } from './routes/_homeLayout/$serverTitle'
+import { Route as HomeLayoutServerTitleChatRoomIdRouteImport } from './routes/_homeLayout/$serverTitle.$chatRoomId'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const HomeLayoutRoute = HomeLayoutRouteImport.update({
+  id: '/_homeLayout',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HomeLayoutIndexRoute = HomeLayoutIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => HomeLayoutRoute,
+} as any)
+const HomeLayoutServerTitleRoute = HomeLayoutServerTitleRouteImport.update({
+  id: '/$serverTitle',
+  path: '/$serverTitle',
+  getParentRoute: () => HomeLayoutRoute,
+} as any)
+const HomeLayoutServerTitleChatRoomIdRoute =
+  HomeLayoutServerTitleChatRoomIdRouteImport.update({
+    id: '/$chatRoomId',
+    path: '/$chatRoomId',
+    getParentRoute: () => HomeLayoutServerTitleRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
+  '/$serverTitle': typeof HomeLayoutServerTitleRouteWithChildren
+  '/': typeof HomeLayoutIndexRoute
+  '/$serverTitle/$chatRoomId': typeof HomeLayoutServerTitleChatRoomIdRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
+  '/$serverTitle': typeof HomeLayoutServerTitleRouteWithChildren
+  '/': typeof HomeLayoutIndexRoute
+  '/$serverTitle/$chatRoomId': typeof HomeLayoutServerTitleChatRoomIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
+  '/_homeLayout': typeof HomeLayoutRouteWithChildren
+  '/_homeLayout/$serverTitle': typeof HomeLayoutServerTitleRouteWithChildren
+  '/_homeLayout/': typeof HomeLayoutIndexRoute
+  '/_homeLayout/$serverTitle/$chatRoomId': typeof HomeLayoutServerTitleChatRoomIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/$serverTitle' | '/' | '/$serverTitle/$chatRoomId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/$serverTitle' | '/' | '/$serverTitle/$chatRoomId'
+  id:
+    | '__root__'
+    | '/_homeLayout'
+    | '/_homeLayout/$serverTitle'
+    | '/_homeLayout/'
+    | '/_homeLayout/$serverTitle/$chatRoomId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
+  HomeLayoutRoute: typeof HomeLayoutRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
+    '/_homeLayout': {
+      id: '/_homeLayout'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof HomeLayoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_homeLayout/': {
+      id: '/_homeLayout/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof HomeLayoutIndexRouteImport
+      parentRoute: typeof HomeLayoutRoute
+    }
+    '/_homeLayout/$serverTitle': {
+      id: '/_homeLayout/$serverTitle'
+      path: '/$serverTitle'
+      fullPath: '/$serverTitle'
+      preLoaderRoute: typeof HomeLayoutServerTitleRouteImport
+      parentRoute: typeof HomeLayoutRoute
+    }
+    '/_homeLayout/$serverTitle/$chatRoomId': {
+      id: '/_homeLayout/$serverTitle/$chatRoomId'
+      path: '/$chatRoomId'
+      fullPath: '/$serverTitle/$chatRoomId'
+      preLoaderRoute: typeof HomeLayoutServerTitleChatRoomIdRouteImport
+      parentRoute: typeof HomeLayoutServerTitleRoute
     }
   }
 }
 
+interface HomeLayoutServerTitleRouteChildren {
+  HomeLayoutServerTitleChatRoomIdRoute: typeof HomeLayoutServerTitleChatRoomIdRoute
+}
+
+const HomeLayoutServerTitleRouteChildren: HomeLayoutServerTitleRouteChildren = {
+  HomeLayoutServerTitleChatRoomIdRoute: HomeLayoutServerTitleChatRoomIdRoute,
+}
+
+const HomeLayoutServerTitleRouteWithChildren =
+  HomeLayoutServerTitleRoute._addFileChildren(
+    HomeLayoutServerTitleRouteChildren,
+  )
+
+interface HomeLayoutRouteChildren {
+  HomeLayoutServerTitleRoute: typeof HomeLayoutServerTitleRouteWithChildren
+  HomeLayoutIndexRoute: typeof HomeLayoutIndexRoute
+}
+
+const HomeLayoutRouteChildren: HomeLayoutRouteChildren = {
+  HomeLayoutServerTitleRoute: HomeLayoutServerTitleRouteWithChildren,
+  HomeLayoutIndexRoute: HomeLayoutIndexRoute,
+}
+
+const HomeLayoutRouteWithChildren = HomeLayoutRoute._addFileChildren(
+  HomeLayoutRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
+  HomeLayoutRoute: HomeLayoutRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
