@@ -53,7 +53,37 @@
 - 각 기능 별 스타일링 코드, API 데이터 패칭 코드, 커스텀 타입을 분리해 편리한 개발 및 유지보수가 가능하도록 [Feature-Sliced Design](https://feature-sliced.design/) 아키텍처를 사용하였습니다.
 
 ```
-
+.
+└── src/
+    ├── routes(라우팅을 위한 폴더)/
+    │   ├── __root.tsx
+    │   ├── _homeLayout.tsx
+    │   ├── _homeLayout/
+    │   │   ├── index.ts
+    │   │   ├── $serverTitle.tsx
+    │   │   └── $serverTitle.$chatRoomid.tsx
+    │   ├── login.tsx
+    │   └── signup.tsx
+    ├── shared(기능 무관 사용되는 공유 항목)/
+    │   ├── utils
+    │   ├── hooks
+    │   ├── api(axios 인스턴스 및 요청 엔드포인트)
+    │   ├── ui(UI 컴포넌트)
+    │   └── styles(공유 vanilla extract stylesheet)
+    └── widgets(기능 별 UI 분리)/
+        ├── login(기능 폴더)/
+        │   ├── api
+        │   ├── ui
+        │   ├── styles
+        │   ├── types
+        │   └── model/
+        │       ├── hooks
+        │       ├── context
+        │       ├── constants
+        │       └── util
+        ├── signup
+        ├── chat
+        └── board
 ```
 
 
