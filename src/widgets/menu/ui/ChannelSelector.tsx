@@ -18,7 +18,7 @@ export default function ChannelSelector() {
   const serverId = current.split('/')[1]
   const navigate = useNavigate()
 
-  const grouped = CHANNEL_LIST[serverId]
+  const grouped = CHANNEL_LIST[serverId] ?? {}
 
   const [toggleState, setToggleState] = useState<Record<string, boolean>>({})
 
