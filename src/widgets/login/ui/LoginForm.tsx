@@ -1,5 +1,5 @@
 import { PATH } from '@/shared/constants';
-import { authForm } from '@/shared/styles';
+import { authForm, authFormWrapper } from '@/shared/styles';
 
 import { authFormAtag, authFormButton, authFormPtag } from '@/shared/styles';
 
@@ -8,7 +8,7 @@ import Button from '@/shared/components/Button';
 
 export default function LoginForm() {
   return (
-    <>
+    <form className={authFormWrapper}>
       <div className={authForm}>
         <FormInput title='이메일 또는 전화번호' />
         <FormInput title='비밀번호' type='password' />
@@ -18,11 +18,11 @@ export default function LoginForm() {
       </a>
       <Button className={authFormButton}>로그인</Button>
       <p className={authFormPtag}>
-        <span style={{ whiteSpace: 'nowrap' }}>계정이 필요한가요?</span>
+        <span>계정이 필요한가요? </span>
         <a href={PATH.REGISTER} className={authFormAtag}>
           가입하기
         </a>
       </p>
-    </>
+    </form>
   );
 }

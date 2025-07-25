@@ -37,6 +37,13 @@ export const authContainerTitle = style({
   textAlign: 'center',
 });
 
+export const authFormWrapper = style({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: vars.spacing.md,
+  width: '100%',
+});
+
 export const authForm = style({
   width: '100%',
   height: '100%',
@@ -63,11 +70,10 @@ export const authFormPtag = style({
   textAlign: 'start',
   fontSize: vars.font.size.sm,
   fontWeight: vars.font.weight.semibold,
-  color: vars.colors.subDark,
-  display: 'flex',
-  gap: vars.spacing.xs,
+  color: vars.colors.sub,
   width: '100%',
   marginTop: vars.spacing.xs,
+  lineHeight: '1.4',
 });
 
 export const authFormButton = style({
@@ -77,5 +83,4 @@ export const authFormButton = style({
   color: vars.colors.white,
   fontSize: vars.font.size.md,
   fontWeight: vars.font.weight.bold,
-  marginTop: vars.spacing.md,
 });
