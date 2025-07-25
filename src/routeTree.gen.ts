@@ -13,6 +13,7 @@ import { Route as HomeLayoutRouteImport } from './routes/_homeLayout'
 import { Route as AuthLayoutRouteImport } from './routes/_authLayout'
 import { Route as HomeLayoutIndexRouteImport } from './routes/_homeLayout/index'
 import { Route as HomeLayoutServerTitleRouteImport } from './routes/_homeLayout/$serverTitle'
+import { Route as AuthLayoutRegisterRouteImport } from './routes/_authLayout/register'
 import { Route as AuthLayoutLoginRouteImport } from './routes/_authLayout/login'
 import { Route as HomeLayoutServerTitleChatRoomIdRouteImport } from './routes/_homeLayout/$serverTitle.$chatRoomId'
 
@@ -34,6 +35,11 @@ const HomeLayoutServerTitleRoute = HomeLayoutServerTitleRouteImport.update({
   path: '/$serverTitle',
   getParentRoute: () => HomeLayoutRoute,
 } as any)
+const AuthLayoutRegisterRoute = AuthLayoutRegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => AuthLayoutRoute,
+} as any)
 const AuthLayoutLoginRoute = AuthLayoutLoginRouteImport.update({
   id: '/login',
   path: '/login',
@@ -48,12 +54,14 @@ const HomeLayoutServerTitleChatRoomIdRoute =
 
 export interface FileRoutesByFullPath {
   '/login': typeof AuthLayoutLoginRoute
+  '/register': typeof AuthLayoutRegisterRoute
   '/$serverTitle': typeof HomeLayoutServerTitleRouteWithChildren
   '/': typeof HomeLayoutIndexRoute
   '/$serverTitle/$chatRoomId': typeof HomeLayoutServerTitleChatRoomIdRoute
 }
 export interface FileRoutesByTo {
   '/login': typeof AuthLayoutLoginRoute
+  '/register': typeof AuthLayoutRegisterRoute
   '/$serverTitle': typeof HomeLayoutServerTitleRouteWithChildren
   '/': typeof HomeLayoutIndexRoute
   '/$serverTitle/$chatRoomId': typeof HomeLayoutServerTitleChatRoomIdRoute
@@ -63,20 +71,32 @@ export interface FileRoutesById {
   '/_authLayout': typeof AuthLayoutRouteWithChildren
   '/_homeLayout': typeof HomeLayoutRouteWithChildren
   '/_authLayout/login': typeof AuthLayoutLoginRoute
+  '/_authLayout/register': typeof AuthLayoutRegisterRoute
   '/_homeLayout/$serverTitle': typeof HomeLayoutServerTitleRouteWithChildren
   '/_homeLayout/': typeof HomeLayoutIndexRoute
   '/_homeLayout/$serverTitle/$chatRoomId': typeof HomeLayoutServerTitleChatRoomIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/login' | '/$serverTitle' | '/' | '/$serverTitle/$chatRoomId'
+  fullPaths:
+    | '/login'
+    | '/register'
+    | '/$serverTitle'
+    | '/'
+    | '/$serverTitle/$chatRoomId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/login' | '/$serverTitle' | '/' | '/$serverTitle/$chatRoomId'
+  to:
+    | '/login'
+    | '/register'
+    | '/$serverTitle'
+    | '/'
+    | '/$serverTitle/$chatRoomId'
   id:
     | '__root__'
     | '/_authLayout'
     | '/_homeLayout'
     | '/_authLayout/login'
+    | '/_authLayout/register'
     | '/_homeLayout/$serverTitle'
     | '/_homeLayout/'
     | '/_homeLayout/$serverTitle/$chatRoomId'
@@ -117,6 +137,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeLayoutServerTitleRouteImport
       parentRoute: typeof HomeLayoutRoute
     }
+    '/_authLayout/register': {
+      id: '/_authLayout/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof AuthLayoutRegisterRouteImport
+      parentRoute: typeof AuthLayoutRoute
+    }
     '/_authLayout/login': {
       id: '/_authLayout/login'
       path: '/login'
@@ -136,10 +163,12 @@ declare module '@tanstack/react-router' {
 
 interface AuthLayoutRouteChildren {
   AuthLayoutLoginRoute: typeof AuthLayoutLoginRoute
+  AuthLayoutRegisterRoute: typeof AuthLayoutRegisterRoute
 }
 
 const AuthLayoutRouteChildren: AuthLayoutRouteChildren = {
   AuthLayoutLoginRoute: AuthLayoutLoginRoute,
+  AuthLayoutRegisterRoute: AuthLayoutRegisterRoute,
 }
 
 const AuthLayoutRouteWithChildren = AuthLayoutRoute._addFileChildren(
