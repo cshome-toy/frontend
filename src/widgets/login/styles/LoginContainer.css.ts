@@ -40,12 +40,6 @@ export const loginContainerQr = style({
   marginBottom: vars.spacing.md,
 });
 
-export const loginContainerTitle = style({
-  fontSize: '24px',
-  fontWeight: '700',
-  lineHeight: '32px',
-});
-
 export const loginContainerSubtitle = style({
   fontSize: '16px',
 });

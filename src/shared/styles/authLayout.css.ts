@@ -29,3 +29,53 @@ export const authContainer = style({
   color: vars.colors.white,
   boxShadow: '0px 0px 20px 0px rgba(0, 0, 0, 0.2)',
 });
+
+export const authContainerTitle = style({
+  fontSize: '24px',
+  fontWeight: '700',
+  width: '100%',
+  textAlign: 'center',
+});
+
+export const authForm = style({
+  width: '100%',
+  height: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: vars.spacing.md,
+  marginTop: vars.spacing.lg,
+});
+
+export const authFormAtag = style({
+  width: '100%',
+  textAlign: 'start',
+  textDecoration: 'none',
+  fontSize: vars.font.size.sm,
+  fontWeight: vars.font.weight.semibold,
+  color: vars.colors.pointLight,
+  cursor: 'pointer',
+  ':hover': {
+    textDecoration: 'underline',
+  },
+});
+
+export const authFormPtag = style({
+  textAlign: 'start',
+  fontSize: vars.font.size.sm,
+  fontWeight: vars.font.weight.semibold,
+  color: vars.colors.subDark,
+  display: 'flex',
+  gap: vars.spacing.xs,
+  width: '100%',
+  marginTop: vars.spacing.xs,
+});
+
+export const authFormButton = style({
+  height: '48px',
+  borderRadius: vars.radius.md,
+  backgroundColor: vars.colors.pointLight,
+  color: vars.colors.white,
+  fontSize: vars.font.size.md,
+  fontWeight: vars.font.weight.bold,
+  marginTop: vars.spacing.md,
+});
