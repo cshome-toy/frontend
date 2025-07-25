@@ -16,6 +16,7 @@ export const vars = createGlobalTheme('#app', {
     pointBorder: '#6771EC',
     pointHover: '#4654C0',
     pointFocus: '#7AB0F5',
+    error: '#F57976',
   },
   font: {
     family: {

@@ -17,7 +17,7 @@ export const formInputItemTitle = style({
 });
 
 export const formInputItemTitleRequired = style({
-  color: '#F57976',
+  color: vars.colors.error,
 });
 
 export const formInputItemDescription = style({
