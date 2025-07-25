@@ -10,25 +10,6 @@ export const loginForm = style({
   marginTop: vars.spacing.lg,
 });
 
-export const loginFormItem = style({
-  width: '100%',
-  height: '100%',
-  display: 'flex',
-  flexDirection: 'column',
-  gap: vars.spacing.sm,
-});
-
-export const loginFormItemTitle = style({
-  fontSize: vars.font.size.xs,
-  fontWeight: vars.font.weight.bold,
-  display: 'flex',
-  gap: vars.spacing.xs,
-});
-
-export const loginFormItemTitleRequired = style({
-  color: '#F57976',
-});
-
 export const loginFormAtag = style({
   width: '100%',
   textAlign: 'start',
