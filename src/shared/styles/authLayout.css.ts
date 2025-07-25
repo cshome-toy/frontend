@@ -25,6 +25,7 @@ export const authContainer = style({
   maxHeight: '746px',
   backgroundColor: vars.colors.main,
   borderRadius: vars.radius.md,
-  padding: vars.spacing.md,
+  padding: vars.spacing.xl,
   color: vars.colors.white,
+  boxShadow: '0px 0px 20px 0px rgba(0, 0, 0, 0.2)',
 });
