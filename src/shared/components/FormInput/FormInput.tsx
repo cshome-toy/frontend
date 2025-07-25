@@ -9,6 +9,7 @@ import {
   formInputItemTitle,
   formInputItemTitleRequired,
 } from './FormInput.css';
+import { ANIMATE_DURATION } from '@/shared/constants';
 
 interface FormInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   title: string;
@@ -35,7 +36,7 @@ export default function FormInput({ title, required = true, description, ...rest
       layout
       layoutId={`form-input-${title}`}
       transition={{
-        duration: 0.3,
+        duration: ANIMATE_DURATION,
         ease: 'easeOut',
       }}
       style={{ willChange: 'transform' }}
@@ -54,7 +55,7 @@ export default function FormInput({ title, required = true, description, ...rest
             height: isFocused ? 'auto' : 0,
           }}
           transition={{
-            duration: 0.3,
+            duration: ANIMATE_DURATION,
             ease: 'easeOut',
           }}
           style={{
