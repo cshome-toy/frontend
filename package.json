@@ -13,6 +13,7 @@
     "check": "prettier --write . && eslint --fix"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.83.0",
     "@tanstack/react-router": "^1.121.2",
     "@tanstack/react-router-devtools": "^1.121.2",
     "@tanstack/router-plugin": "^1.121.2",
@@ -20,9 +21,12 @@
     "@vanilla-extract/css": "^1.17.4",
     "@vanilla-extract/css-utils": "^0.1.6",
     "@vanilla-extract/vite-plugin": "^5.1.0",
+    "axios": "^1.11.0",
     "clsx": "^2.1.1",
+    "motion": "^12.23.9",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-hook-form": "^7.61.1"
   },
   "devDependencies": {
     "@tanstack/eslint-config": "^0.1.0",
