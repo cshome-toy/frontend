@@ -6,8 +6,7 @@ export const Route = createFileRoute('/_homeLayout/$serverTitle')({
 
 function RouteComponent() {
   return (
-    <div style={{ color: 'white' }}>
-      <div>{Route.useParams().serverTitle}</div>
+    <div>
       <Outlet />
     </div>
   );
