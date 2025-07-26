@@ -25,14 +25,14 @@ export const CHANNEL_LIST: Record<
 > = {
   cshome: {
     chat: {
-      label: '💬 채팅 채널',
+      label: '채팅 채널(채팅방)',
       items: [
         { id: '1', title: '일반' },
         { id: '2', title: '잡담' },
       ],
     },
     board: {
-      label: '📌 정보',
+      label: '정보(게시판)',
       items: [
         { id: 'welcome', title: '환영합니다' },
         { id: 'notes', title: '노트-자료' },
