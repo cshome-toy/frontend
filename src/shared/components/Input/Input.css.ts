@@ -3,7 +3,7 @@ import { style, styleVariants } from '@vanilla-extract/css';
 
 export const input = style({
   borderRadius: vars.radius.md,
-  border: `2px solid ${vars.colors.mainBorder}`,
+  border: `1px solid ${vars.colors.mainBorder}`,
   backgroundColor: vars.colors.mainLight,
   color: vars.colors.white,
   outline: 'none',
@@ -30,6 +30,9 @@ export const inputVariant = styleVariants({
       borderColor: '#ff6b6b',
       boxShadow: '0 0 0 2px #ff6b6b20',
     },
+  },
+  auth: {
+    backgroundColor: vars.colors.mainDark,
   },
 });
 
