@@ -1,6 +1,6 @@
 
 import { createFileRoute } from '@tanstack/react-router';
-import ChatRoom from '@/widgets/chat/styles/chatRoom';
+import ChatRoom from '@/widgets/chat/ui/chatRoom';
 
 export const Route = createFileRoute(
   '/_homeLayout/$serverTitle/chat/$chatRoomId'

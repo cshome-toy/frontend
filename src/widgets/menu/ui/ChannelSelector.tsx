@@ -1,14 +1,11 @@
 import { useState } from 'react';
 import { CHANNEL_LIST } from '@/shared/mock/server';
-import type { ChannelCategory } from '@/shared/mock/server';
+import type { ChannelCategory } from '@/shared/types/channelCategory';
+import type { CategoryType } from '@/shared/types/category';
 import ChannelButton from '@/widgets/menu/ui/ChannelButton';
 import {
   channelSelector,
   channelSelectorHeader,
-  channelSelectorItem,
-  channelSelectorItemActive,
-  channelSelectorIcon,
-  channelSelectorIconActive,
   channelSelectorList,
   channelSelectorWrapper,
   categoryHeader,
@@ -22,7 +19,7 @@ export default function ChannelSelector() {
   const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
   const categoryTypes = ['board', 'chat'] as const;
-  const grouped: Record<'chat' | 'board', ChannelCategory | undefined> = CHANNEL_LIST[serverId] ?? {};
+  const grouped: Record<CategoryType, ChannelCategory | undefined> = CHANNEL_LIST[serverId] ?? {};
   const [toggleState, setToggleState] = useState<Record<string, boolean>>({});
 
   const toggleCategory = (category: string) => {

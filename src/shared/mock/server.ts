@@ -1,3 +1,5 @@
+import type { ChannelCategory } from '@/shared/types/channelCategory';
+import type { CategoryType } from '@/shared/types/category';
 export const SERVER = {
   title: 'cshome',
   image: '/images/image-server.png',
@@ -11,18 +13,7 @@ export const SERVER_LIST = [
   },
 ];
 
-export type ChannelCategory = {
-  label: string;
-  items: { id: string; title: string }[];
-};
-
-export const CHANNEL_LIST: Record<
-  string,
-  {
-    chat: ChannelCategory;
-    board: ChannelCategory;
-  }
-> = {
+export const CHANNEL_LIST: Record<string, Record<CategoryType, ChannelCategory>> = {
   cshome: {
     chat: {
       label: '채팅 채널(채팅방)',
