@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { CHANNEL_LIST } from '@/shared/mock/server';
 import type { ChannelCategory } from '@/shared/mock/server';
+import ChannelButton from '@/widgets/menu/ui/ChannelButton';
 import {
   channelSelector,
   channelSelectorHeader,
@@ -20,7 +21,7 @@ export default function ChannelSelector() {
   const serverId = current.split('/')[1];
   const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
-
+  const categoryTypes = ['board', 'chat'] as const;
   const grouped: Record<'chat' | 'board', ChannelCategory | undefined> = CHANNEL_LIST[serverId] ?? {};
   const [toggleState, setToggleState] = useState<Record<string, boolean>>({});
 
@@ -36,9 +37,7 @@ export default function ChannelSelector() {
       <div className={channelSelector}>
         {serverId && <div className={channelSelectorHeader}>{serverId}</div>}
 
-        const categoryType = ['board', 'chat'] as const;
-        ...
-        {categoryType.map((type) => {
+        {(categoryTypes).map((type) => {
           const category = grouped[type];
           if (!category) return null;
 
@@ -65,19 +64,13 @@ export default function ChannelSelector() {
                   {channelsToShow.map(({ id, title }) => {
                     const isActive = id === activeChannelId;
                     return (
-                      <button
+                      <ChannelButton
                         key={id}
-                        className={`${channelSelectorItem} ${isActive ? channelSelectorItemActive : ''}`}
+                        id={id}
+                        title={title}
+                        isActive={isActive}
                         onClick={() => navigate({ to: `/${serverId}/${type}/${id}` })}
-                      >
-                        <img
-                          src="/icons/icon-chat.svg"
-                          alt="channel"
-                          className={`${channelSelectorIcon} ${isActive ? channelSelectorIconActive : ''}`}
-                          style={{ width: 20, height: 20 }}
-                        />
-                        <span>{title}</span>
-                      </button>
+                      />
                     );
                   })}
                 </div>
