@@ -36,7 +36,9 @@ export default function ChannelSelector() {
       <div className={channelSelector}>
         {serverId && <div className={channelSelectorHeader}>{serverId}</div>}
 
-        {(['board', 'chat'] as const).map((type) => {
+        const categoryType = ['board', 'chat'] as const;
+        ...
+        {categoryType.map((type) => {
           const category = grouped[type];
           if (!category) return null;
 
