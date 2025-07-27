@@ -11,6 +11,7 @@ import {
   channelSelectorList,
   channelSelectorWrapper,
   categoryHeader,
+  Image,
 } from '@/widgets/menu/styles';
 import { useLocation, useNavigate } from '@tanstack/react-router';
 
@@ -18,6 +19,7 @@ export default function ChannelSelector() {
   const current = useLocation().pathname;
   const serverId = current.split('/')[1];
   const navigate = useNavigate();
+  const [hovered, setHovered] = useState(false);
 
   const grouped: Record<'chat' | 'board', ChannelCategory | undefined> = CHANNEL_LIST[serverId] ?? {};
   const [toggleState, setToggleState] = useState<Record<string, boolean>>({});
@@ -48,7 +50,12 @@ export default function ChannelSelector() {
             <div key={type}>
               <button className={categoryHeader} onClick={() => toggleCategory(type)}>
                 <span>{category.label}</span>
-                <span>{isOpen ? '▾' : '▸'}</span>
+                <span onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+                  <img className={Image}src={isOpen ? hovered ? '/icons/icon-arrow(Down_sub).svg' : '/icons/icon-arrow(down_subDark).svg'
+                                                    : hovered? '/icons/icon-arrow(Right_sub).svg': '/icons/icon-arrow(Right_subDark).svg'} 
+                                                    alt="arrow"/>
+                </span>
+
               </button>
 
               {channelsToShow.length > 0 && (

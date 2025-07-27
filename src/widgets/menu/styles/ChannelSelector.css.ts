@@ -79,3 +79,13 @@ export const categoryHeader = style({
       color: vars.colors.sub,       
     },
 })
+export const Image = style({
+  width: '20px',
+  height: '20px',
+  marginLeft: '-2px',
+  marginTop: '6px',
+  borderRadius: vars.radius.sm,
+  objectFit: 'cover',
+  objectPosition: 'center',
+  
+});

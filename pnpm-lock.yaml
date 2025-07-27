@@ -8,15 +8,12 @@ importers:
 
   .:
     dependencies:
-<<<<<<< HEAD
       '@stomp/stompjs':
         specifier: ^7.1.1
         version: 7.1.1
-=======
       '@tanstack/react-query':
         specifier: ^5.83.0
         version: 5.83.0(react@19.1.0)
->>>>>>> 7cac33db1b25d7743469d55722d7154d58b3e5a4
       '@tanstack/react-router':
         specifier: ^1.121.2
         version: 1.128.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -53,15 +50,12 @@ importers:
       react-dom:
         specifier: ^19.0.0
         version: 19.1.0(react@19.1.0)
-<<<<<<< HEAD
-      sockjs-client:
-        specifier: ^1.6.1
-        version: 1.6.1
-=======
       react-hook-form:
         specifier: ^7.61.1
         version: 7.61.1(react@19.1.0)
->>>>>>> 7cac33db1b25d7743469d55722d7154d58b3e5a4
+      sockjs-client:
+        specifier: ^1.6.1
+        version: 1.6.1
     devDependencies:
       '@tanstack/eslint-config':
         specifier: ^0.1.0

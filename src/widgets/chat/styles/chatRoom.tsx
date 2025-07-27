@@ -15,7 +15,7 @@ import {
   chatInput,
   chatHeaderText,
   textOnly,
-} from '@/widgets/menu/styles/chatRoom.css';
+} from '@/widgets/chat/ui/chatRoom.css';
 import { CHANNEL_LIST } from '@/shared/mock/server';
 import { USER } from '@/shared/mock/user';
 
