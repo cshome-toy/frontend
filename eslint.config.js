@@ -1,12 +1,20 @@
 //  @ts-check
 
-import js from '@eslint/js';
-import tseslint from '@typescript-eslint/eslint-plugin';
-import tsparser from '@typescript-eslint/parser';
+import js from '@eslint/js'
+import tseslint from '@typescript-eslint/eslint-plugin'
+import tsparser from '@typescript-eslint/parser'
 
 export default [
   {
-    ignores: ['dist/**', 'node_modules/**', 'build/**', 'coverage/**', '*.min.js', '*.bundle.js', '*.chunk.js'],
+    ignores: [
+      'dist/**',
+      'node_modules/**',
+      'build/**',
+      'coverage/**',
+      '*.min.js',
+      '*.bundle.js',
+      '*.chunk.js',
+    ],
   },
   js.configs.recommended,
   {
@@ -83,4 +91,4 @@ export default [
       'import/no-unresolved': 'off',
     },
   },
-];
+]
