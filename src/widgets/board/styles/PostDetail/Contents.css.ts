@@ -56,22 +56,6 @@ export const messageContent = style({
   marginLeft: '52px',
 });
 
-export const messageContentParagraph = style({
-  margin: '0 0 8px 0',
-
-  selectors: {
-    '&:last-child': {
-      marginBottom: 0,
-    },
-  },
-});
-
-export const messageReactions = style({
-  display: 'flex',
-  gap: '6px',
-  marginLeft: '52px',
-});
-
 export const threadHeader = style({
   display: 'flex',
   alignItems: 'flex-start',
@@ -90,38 +74,11 @@ export const threadTitle = style({
   lineHeight: '1.2',
 });
 
-export const threadMeta = style({
-  fontSize: '13px',
-  color: '#96989d',
-  fontWeight: vars.font.weight.medium,
-});
-
-export const reactionButton = style({
-  display: 'flex',
-  alignItems: 'center',
-  gap: vars.spacing.xs,
-  padding: `${vars.spacing.xs} ${vars.spacing.sm}`,
-  backgroundColor: 'transparent',
-  border: `1px solid ${vars.colors.mainBorder}`,
-  color: '#96989d',
-  cursor: 'pointer',
-  borderRadius: '12px',
-  fontSize: vars.font.size.xs,
-  fontWeight: vars.font.weight.medium,
-  transition: 'all 0.2s',
-
-  ':hover': {
-    backgroundColor: vars.colors.mainDark,
-    borderColor: vars.colors.point,
-  },
-});
-
-export const reactionActive = style({
-  backgroundColor: vars.colors.point,
-  borderColor: vars.colors.point,
-  color: vars.colors.white,
-
-  ':hover': {
-    backgroundColor: vars.colors.pointHover,
-  },
+export const userBadge = style({
+  fontSize: '10px',
+  fontWeight: vars.font.weight.bold,
+  color: vars.colors.point,
+  backgroundColor: 'rgba(88, 101, 242, 0.1)',
+  padding: '2px 6px',
+  borderRadius: vars.radius.md,
 });

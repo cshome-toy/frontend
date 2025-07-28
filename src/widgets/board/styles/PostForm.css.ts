@@ -9,30 +9,8 @@ export const expandedContainer = style({
   boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
 });
 
-export const formHeader = style({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  marginBottom: vars.spacing.md,
-  paddingBottom: '12px',
-  borderBottom: `1px solid ${vars.colors.mainBorder}`,
-});
-
-export const formHeaderTitle = style({
-  color: vars.colors.white,
-  fontSize: vars.font.size.lg,
-  fontWeight: vars.font.weight.semibold,
-  margin: 0,
-});
-
 export const formField = style({
   marginBottom: vars.spacing.md,
-});
-
-export const tagSection = style({
-  display: 'flex',
-  flexDirection: 'column',
-  gap: vars.spacing.sm,
 });
 
 export const formActions = style({
@@ -41,60 +19,6 @@ export const formActions = style({
   justifyContent: 'flex-end',
   paddingTop: vars.spacing.md,
   borderTop: `1px solid ${vars.colors.mainBorder}`,
-});
-
-export const cancelBtn = style({
-  padding: `${vars.spacing.sm} ${vars.spacing.md}`,
-  backgroundColor: 'transparent',
-  border: `1px solid ${vars.colors.mainBorder}`,
-  color: '#96989d',
-  borderRadius: '6px',
-  cursor: 'pointer',
-  fontSize: vars.font.size.sm,
-  fontWeight: vars.font.weight.medium,
-
-  ':hover': {
-    backgroundColor: vars.colors.mainLight,
-    color: vars.colors.white,
-  },
-});
-
-export const submitBtn = style({
-  padding: `${vars.spacing.sm} ${vars.spacing.md}`,
-  backgroundColor: vars.colors.point,
-  border: 'none',
-  color: vars.colors.white,
-  borderRadius: '6px',
-  cursor: 'pointer',
-  fontSize: vars.font.size.sm,
-  fontWeight: vars.font.weight.semibold,
-  transition: 'all 0.2s',
-
-  selectors: {
-    '&:hover:not(:disabled)': {
-      backgroundColor: vars.colors.pointHover,
-    },
-    '&:disabled': {
-      backgroundColor: '#4f545c',
-      color: '#96989d',
-      cursor: 'not-allowed',
-    },
-  },
-});
-
-export const collapseBtn = style({
-  background: 'transparent',
-  border: 'none',
-  color: '#96989d',
-  cursor: 'pointer',
-  fontSize: vars.font.size.md,
-  padding: vars.spacing.xs,
-  borderRadius: vars.radius.sm,
-
-  ':hover': {
-    backgroundColor: vars.colors.mainLight,
-    color: vars.colors.white,
-  },
 });
 
 export const titleInput = style({

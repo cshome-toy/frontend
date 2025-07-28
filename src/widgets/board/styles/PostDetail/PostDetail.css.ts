@@ -1,4 +1,3 @@
-// styles/PostDetail.css.ts
 import { vars } from '@/vars.css';
 import { style } from '@vanilla-extract/css';
 
@@ -21,13 +20,4 @@ export const messagesContainer = style({
   flexDirection: 'column',
   gap: '0',
   padding: '32px 0px',
-});
-
-export const userBadge = style({
-  fontSize: '10px',
-  fontWeight: vars.font.weight.bold,
-  color: vars.colors.point,
-  backgroundColor: 'rgba(88, 101, 242, 0.1)',
-  padding: '2px 6px',
-  borderRadius: vars.radius.md,
 });

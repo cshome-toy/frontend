@@ -17,21 +17,6 @@ export const headerTitle = style({
   gap: vars.spacing.sm,
 });
 
-export const contents = style({
-  padding: vars.spacing.md,
-  display: 'flex',
-  flexDirection: 'column',
-  gap: vars.spacing.md,
-  backgroundColor: vars.colors.mainLight,
-  borderRadius: vars.radius.md,
-  boxSizing: 'border-box',
-  height: '100%',
-  color: vars.colors.sub,
-  fontWeight: vars.font.weight.bold,
-  fontSize: vars.font.size.sm,
-  lineHeight: '1.5',
-});
-
 export const splitContainer = style({
   display: 'flex',
   height: '100%',
@@ -94,4 +79,9 @@ export const threadCloseBtn = style({
     backgroundColor: vars.colors.mainDark,
     color: vars.colors.white,
   },
+});
+
+export const postsList = style({
+  flex: 1,
+  overflowY: 'auto',
 });

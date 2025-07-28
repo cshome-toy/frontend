@@ -73,11 +73,3 @@ export const sendButton = style({
     cursor: 'not-allowed',
   },
 });
-
-export const characterCount = style({
-  color: vars.colors.subDark,
-  fontSize: vars.font.size.xs,
-  marginLeft: vars.spacing.sm,
-  flexShrink: 0,
-  alignSelf: 'center',
-});

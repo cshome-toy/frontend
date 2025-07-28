@@ -1,27 +1,15 @@
 import { useState, useEffect, useRef } from 'react';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import { postsList } from '@/widgets/board/styles/PostItem.css';
-import PostItem from '@/widgets/board/ui/PostItem';
-import { mockPosts } from '@/shared/mock/board';
-import {
-  header,
-  headerTitle,
-  splitContainer,
-  listSection,
-  listSectionFullscreen,
-  detailSection,
-  threadCloseBtn,
-} from '@/widgets/board/styles/Board.css';
+
+import { SliderBar } from '@/shared/components/SliderBar';
+import { PostItem } from '@/widgets/board/ui/PostItem';
 import { PostSearch } from '@/widgets/board/ui/PostSearch';
 import { PostDetail } from '@/widgets/board/ui/PostDetail';
 
 import { LAYOUT_CONFIG } from '@/shared/constants/board';
 import { mockPosts } from '@/shared/mock/board';
 
-const LAYOUT_CONFIG = {
-  FULL_WIDTH: 100,
-  SPLIT_LIST_WIDTH: 61,
-} as const;
+import { BoardStyle } from '@/widgets/board/styles';
 
 export const Route = createFileRoute('/_homeLayout/$serverTitle/board/$boardTitle')({
   component: RouteComponent,
@@ -69,13 +57,13 @@ function RouteComponent() {
   };
 
   return (
-    <div className={splitContainer} ref={containerRef}>
+    <div className={BoardStyle.splitContainer} ref={containerRef}>
       <div
-        className={isFullscreen ? listSectionFullscreen : listSection}
+        className={isFullscreen ? BoardStyle.listSectionFullscreen : BoardStyle.listSection}
         style={{ width: isFullscreen ? '100%' : `${listWidth}%` }}
       >
-        <div className={header}>
-          <div className={headerTitle}>
+        <div className={BoardStyle.header}>
+          <div className={BoardStyle.headerTitle}>
             <img src='/icons/icon-board.svg' style={{ width: '20px', height: '20px' }} alt='게시판 아이콘' />
             {boardTitle}
           </div>
@@ -83,7 +71,7 @@ function RouteComponent() {
 
         <PostSearch />
 
-        <div className={postsList}>
+        <div className={BoardStyle.postsList}>
           {mockPosts.map((post) => (
             <PostItem key={post.id} post={post} onClick={navigateToBoardDetail} isSelected={post.id === postId} />
           ))}
@@ -93,10 +81,12 @@ function RouteComponent() {
       {showDetail && (
         <>
           <SliderBar listWidth={listWidth} setListWidth={setListWidth} containerRef={containerRef} />
-          <div className={detailSection} style={{ width: `${100 - listWidth}%` }}>
-            <div className={header}>
-              <div className={headerTitle}>{mockPosts.find((p) => p.id === postId)?.title ?? '게시글 없음'}</div>
-              <button className={threadCloseBtn} onClick={closeDetail} type='button'>
+          <div className={BoardStyle.detailSection} style={{ width: `${100 - listWidth}%` }}>
+            <div className={BoardStyle.header}>
+              <div className={BoardStyle.headerTitle}>
+                {mockPosts.find((p) => p.id === postId)?.title ?? '게시글 없음'}
+              </div>
+              <button className={BoardStyle.threadCloseBtn} onClick={closeDetail} type='button'>
                 ✕
               </button>
             </div>

@@ -67,4 +67,4 @@ const SliderBar = ({ listWidth, setListWidth, containerRef }: SliderBarProps) =>
   );
 };
 
-export default SliderBar;
+export { SliderBar };

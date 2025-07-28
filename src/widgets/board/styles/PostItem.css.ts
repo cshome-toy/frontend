@@ -1,11 +1,6 @@
 import { vars } from '@/vars.css';
 import { style } from '@vanilla-extract/css';
 
-export const postsList = style({
-  flex: 1,
-  overflowY: 'auto',
-});
-
 export const postItem = style({
   backgroundColor: vars.colors.mainXLight,
   borderRadius: vars.radius.lg,

@@ -1,14 +1,12 @@
 import { useRef, useEffect, useState } from 'react';
-import { type Comment } from '@/widgets/board/types/board';
-import {
-  messageInputContainer,
-  inputWrapper,
-  inputAvatar,
-  messageInput,
-  sendButton,
-} from '../../styles/PostDetail/CommentInput.css';
-import { CharacterCounter } from '../CharacterCounter';
+
+import { CharacterCounter } from '@/widgets/board/ui/CharacterCounter';
+
 import { INPUT_CONFIG } from '@/shared/constants/board';
+
+import { type Comment } from '@/widgets/board/types/board';
+
+import { CommentInputStyle } from '@/widgets/board/styles';
 
 interface CommentInputProps {
   comments: Comment[];
@@ -71,14 +69,14 @@ export const CommentInput = ({ comments, setComments, title, messageAreaRef }: C
   };
 
   return (
-    <div className={messageInputContainer}>
-      <form className={inputWrapper} onSubmit={handleSubmit}>
-        <div className={inputAvatar}>
+    <div className={CommentInputStyle.messageInputContainer}>
+      <form className={CommentInputStyle.inputWrapper} onSubmit={handleSubmit}>
+        <div className={CommentInputStyle.inputAvatar}>
           <img src='/icons/icon-board.svg' style={{ width: '20px', height: '20px' }} />
         </div>
         <textarea
           ref={inputRef}
-          className={messageInput}
+          className={CommentInputStyle.messageInput}
           value={newComment}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
@@ -87,7 +85,7 @@ export const CommentInput = ({ comments, setComments, title, messageAreaRef }: C
           aria-label={`${title} 채널에 댓글 작성`}
         />
         <CharacterCounter currentLength={currentLength} maxCharacters={INPUT_CONFIG.MAX_CHARACTERS} />
-        <button type='submit' className={sendButton} disabled={!newComment.trim()}>
+        <button type='submit' className={CommentInputStyle.sendButton} disabled={!newComment.trim()}>
           ➤
         </button>
       </form>

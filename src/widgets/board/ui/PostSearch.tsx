@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { newPostBtn, searchContainer, searchInput } from '../styles/PostSearch.css';
+
 import { PostForm } from './PostForm';
+
+import { PostSearchStyle } from '@/widgets/board/styles';
 
 export function PostSearch() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -15,7 +17,7 @@ export function PostSearch() {
   }
 
   return (
-    <div className={searchContainer}>
+    <div className={PostSearchStyle.searchContainer}>
       <img
         src='/icons/icon-search.svg'
         style={{ transform: 'scaleX(-1)', width: '25px', height: '25px' }}
@@ -24,11 +26,11 @@ export function PostSearch() {
       <input
         type='text'
         placeholder='포스트 검색 또는 생성...'
-        className={searchInput}
+        className={PostSearchStyle.searchInput}
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
-      <button className={newPostBtn} onClick={handleExpand}>
+      <button className={PostSearchStyle.newPostBtn} onClick={handleExpand}>
         <img src='/icons/icon-board_post.svg' style={{ width: '20px', height: '20px' }} alt='포스트 아이콘' />새 포스트
       </button>
     </div>

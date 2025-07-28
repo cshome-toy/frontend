@@ -55,6 +55,7 @@ export const commentText = style({
   lineHeight: '1.4',
   wordBreak: 'break-word',
 });
+
 export const deleteButton = style({
   position: 'absolute',
   top: 0,

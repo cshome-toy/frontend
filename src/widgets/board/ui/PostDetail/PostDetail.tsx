@@ -1,10 +1,14 @@
 import { useState, useRef } from 'react';
-import type { Comment } from '@/widgets/board/types/board';
-import { mockPosts } from '@/shared/mock/board';
+
 import { CommentInput } from './CommentInput';
 import { CommentItem } from './CommentItem';
 import { Contents } from './Contents';
-import { detailContainer, messageArea, messagesContainer } from '../../styles/PostDetail/PostDetail.css';
+
+import { mockPosts } from '@/shared/mock/board';
+
+import type { Comment } from '@/widgets/board/types/board';
+
+import { PostDetailStyle } from '@/widgets/board/styles';
 
 interface PostDetailProps {
   postId: string;
@@ -24,16 +28,16 @@ export default function PostDetail({ postId }: PostDetailProps) {
 
   if (!post) {
     return (
-      <div className={detailContainer}>
+      <div className={PostDetailStyle.detailContainer}>
         <div>포스트를 찾을 수 없습니다 😢</div>
       </div>
     );
   }
 
   return (
-    <div className={detailContainer}>
-      <div className={messageArea} ref={messageAreaRef}>
-        <div className={messagesContainer}>
+    <div className={PostDetailStyle.detailContainer}>
+      <div className={PostDetailStyle.messageArea} ref={messageAreaRef}>
+        <div className={PostDetailStyle.messagesContainer}>
           <img
             src='/icons/icon-board_post.svg'
             style={{ marginLeft: '20px', width: '40px', height: '40px' }}

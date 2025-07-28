@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
+
 import Button from '@/shared/components/Button';
-import { expandedContainer, formField, titleInput, contentTextarea, formActions } from '../styles/PostForm.css';
-import { CharacterCounter } from './CharacterCounter';
+import { CharacterCounter } from '@/widgets/board/ui/CharacterCounter';
+
 import { FORM_CONFIG } from '@/shared/constants/board';
+
+import { PostFormStyle } from '@/widgets/board/styles';
 
 interface PostFormProps {
   setIsExpanded: (isExpanded: boolean) => void;
@@ -67,13 +70,13 @@ export const PostForm = ({ setIsExpanded, title: initialTitle, setTitle }: PostF
   const isValid = !!(title.trim() && content.trim());
 
   return (
-    <div className={expandedContainer}>
+    <div className={PostFormStyle.expandedContainer}>
       <form onSubmit={handleSubmit}>
-        <div className={formField}>
+        <div className={PostFormStyle.formField}>
           <input
             type='text'
             name='title'
-            className={titleInput}
+            className={PostFormStyle.titleInput}
             value={title}
             onChange={handleInputChange}
             placeholder='포스트 제목을 입력하세요...'
@@ -82,11 +85,11 @@ export const PostForm = ({ setIsExpanded, title: initialTitle, setTitle }: PostF
           <CharacterCounter currentLength={titleCurrentLength} maxCharacters={FORM_CONFIG.MAX_TITLE_SIZE} />
         </div>
 
-        <div className={formField}>
+        <div className={PostFormStyle.formField}>
           <textarea
             ref={contentRef}
             name='content'
-            className={contentTextarea}
+            className={PostFormStyle.contentTextarea}
             value={content}
             onChange={handleInputChange}
             placeholder='포스트 내용을 입력하세요...'
@@ -95,7 +98,7 @@ export const PostForm = ({ setIsExpanded, title: initialTitle, setTitle }: PostF
           <CharacterCounter currentLength={contentCurrentLength} maxCharacters={FORM_CONFIG.MAX_CONTENT_SIZE} />
         </div>
 
-        <div className={formActions}>
+        <div className={PostFormStyle.formActions}>
           <Button onClick={handleCollapse} variant='main' size='sm'>
             취소
           </Button>
