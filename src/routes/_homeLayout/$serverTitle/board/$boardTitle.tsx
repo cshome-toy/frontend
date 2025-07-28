@@ -14,7 +14,9 @@ import {
 } from '@/widgets/board/styles/Board.css';
 import { PostSearch } from '@/widgets/board/ui/PostSearch';
 import { PostDetail } from '@/widgets/board/ui/PostDetail';
-import SliderBar from '@/shared/components/SliderBar';
+
+import { LAYOUT_CONFIG } from '@/shared/constants/board';
+import { mockPosts } from '@/shared/mock/board';
 
 const LAYOUT_CONFIG = {
   FULL_WIDTH: 100,
