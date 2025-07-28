@@ -1,8 +1,11 @@
 import { useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
+
 import Button from '@/shared/components/Button';
 import CharacterCounter from '@/shared/components/CharacterCounter';
+
 import { FORM_CONFIG } from '@/shared/constants/board';
+
 import { PostFormStyle } from '@/widgets/board/styles';
 
 interface PostFormProps {
