@@ -7,6 +7,13 @@ import {
   chatInputWrapper,
   chatInput,
   chatHeaderText,
+  chatWelcome,
+  chatWelcomeTitle,
+  chatWelcomeSub,
+  chatDateDivider,
+  chatHr,
+  chatWelcomeShape,
+  chatWelcomeIamge,
 } from '@/widgets/chat/styles/chatRoom.css.ts';
 import { CHANNEL_LIST } from '@/shared/mock/server';
 import { USER } from '@/shared/mock/user';
@@ -63,7 +70,9 @@ export default function ChatRoom({
       })
       .replace(/\.\s?/g, '-')
       .replace(/\.$/, '');
-
+  const extractDate = (timestamp: string) => {
+    return timestamp.split('-오전')[0]?.split('-오후')[0] ?? '';
+  };
   const channel = CHANNEL_LIST[serverTitle]?.chat.items.find(
     (c) => c.id === chatRoomId
   );
@@ -79,15 +88,31 @@ export default function ChatRoom({
       </div>
 
       <div className={chatMessageWrapper} ref={messageListRef}>
+        <div className={chatWelcome}>
+          <div className={chatWelcomeShape}>
+            <img src="/icons/icon-chat.svg" alt="channel" className={chatWelcomeIamge}/>
+          </div>
+          <p className={chatWelcomeTitle}>#{title}에 오신 걸 환영합니다!</p>
+          <p className={chatWelcomeSub}>#{title} 채널의 시작이에요.</p>
+        </div>
+
         {messages.map((msg, i) => {
           const prev = messages[i - 1];
-          const sameGroup =
-            i > 0 &&
-            prev.user.name === msg.user.name &&
-            prev.timestamp === msg.timestamp;
-
+          const sameGroup =i > 0 && prev.user.name === msg.user.name && prev.timestamp === msg.timestamp;
+          const currentDate = extractDate(msg.timestamp);
+          const prevDate = prev ? extractDate(prev.timestamp) : null;
+          const isNewDate = currentDate !== prevDate;
           return (
-            <MessageItem key={i} msg={msg} sameGroup={sameGroup} index={i} />
+            <div key={i}>
+              {isNewDate && (
+                <div className={chatDateDivider}>
+                  <hr className={chatHr} />
+                  <span>{currentDate.replace(/-/g, '년 ').replace(/$/, '일')}</span>
+                  <hr className={chatHr} />
+                </div>
+              )}
+              <MessageItem msg={msg} sameGroup={sameGroup} index={i} />
+            </div>
           );
         })}
       </div>

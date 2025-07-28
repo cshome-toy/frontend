@@ -66,3 +66,47 @@ export const chatInput = style({
   color: vars.colors.sub,
 });
 
+export const chatWelcome = style({
+  textAlign: 'left',
+  color: vars.colors.white,
+});
+
+export const chatWelcomeTitle = style({
+  fontSize: vars.font.size['3xl'],
+  fontWeight: vars.font.weight.bold,
+});
+
+export const chatWelcomeSub = style({
+  fontSize: vars.font.size.lg,
+  marginTop: '8px',
+});
+
+export const chatDateDivider = style({
+  display: 'flex',
+  alignItems: 'center',
+  margin: '20px 0',
+  color: vars.colors.subDark,
+  fontSize: vars.font.size.sm,
+});
+
+export const chatHr = style({
+  flex: 1,
+  border: 0,
+  borderTop: `1px solid ${vars.colors.mainBorder}`,
+});
+export const chatWelcomeShape = style({
+  width: '70px',
+  height: '70px',
+  borderRadius: '100%',
+  backgroundColor: vars.colors.subDark,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  marginBottom: vars.spacing.sm,
+  
+});
+export const chatWelcomeIamge = style({
+  width: '45px',
+  height: '45px',
+  filter: 'brightness(0) invert(1)',
+});
