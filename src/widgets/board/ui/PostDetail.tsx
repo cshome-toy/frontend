@@ -1,8 +1,8 @@
 import { useState, useRef } from 'react';
 
-import { CommentInput } from './CommentInput';
-import { CommentItem } from './CommentItem';
-import { Contents } from './Contents';
+import { CommentInput } from '@/widgets/post/ui/CommentInput';
+import { CommentItem } from '@/widgets/post/ui/CommentItem';
+import { Contents } from '@/widgets/post/ui/Contents';
 
 import { mockPosts } from '@/shared/mock/board';
 
@@ -14,7 +14,7 @@ interface PostDetailProps {
   postId: string;
 }
 
-export default function PostDetail({ postId }: PostDetailProps) {
+export function PostDetail({ postId }: PostDetailProps) {
   const post = mockPosts.find((p) => p.id === postId);
   const [comments, setComments] = useState<Comment[]>(post?.comments || []);
   const messageAreaRef = useRef<HTMLDivElement>(null);

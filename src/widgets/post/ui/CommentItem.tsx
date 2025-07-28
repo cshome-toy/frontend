@@ -1,6 +1,7 @@
 import type { Comment } from '@/widgets/board/types/board';
 
-import { CommentItemStyle } from '@/widgets/board/styles';
+import { CommentItemStyle } from '@/widgets/post/style';
+import { userBadge } from '@/widgets/post/style/Contents.css';
 
 interface CommentItemProps {
   comment: Comment;
@@ -9,7 +10,7 @@ interface CommentItemProps {
 }
 
 export const CommentItem = ({ comment, onDelete, isMine }: CommentItemProps) => {
-  const { id, writer, createAt, content, icon } = comment;
+  const { id, writer, createAt, content, icon, isOwner } = comment;
 
   return (
     <div className={CommentItemStyle.commentMessage}>
@@ -19,6 +20,7 @@ export const CommentItem = ({ comment, onDelete, isMine }: CommentItemProps) => 
       <div className={CommentItemStyle.commentContent}>
         <div className={CommentItemStyle.commentHeader}>
           <span className={CommentItemStyle.commentAuthor}>{writer}</span>
+          {isOwner && <span className={userBadge}>작성자</span>}
           <span className={CommentItemStyle.commentTime}>{createAt}</span>
         </div>
         <div className={CommentItemStyle.commentText}>{content}</div>

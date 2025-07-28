@@ -1,12 +1,12 @@
 import { useRef, useEffect, useState } from 'react';
 
-import { CharacterCounter } from '@/widgets/board/ui/CharacterCounter';
+import CharacterCounter from '@/shared/components/CharacterCounter/CharacterCounter';
 
 import { INPUT_CONFIG } from '@/shared/constants/board';
 
 import { type Comment } from '@/widgets/board/types/board';
 
-import { CommentInputStyle } from '@/widgets/board/styles';
+import { CommentInputStyle } from '@/widgets/post/style';
 
 interface CommentInputProps {
   comments: Comment[];

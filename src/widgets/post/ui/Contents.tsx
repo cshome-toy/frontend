@@ -1,6 +1,6 @@
 import type { Post } from '@/widgets/board/types/board';
 
-import { ContentsStyle } from '@/widgets/board/styles';
+import { ContentsStyle } from '@/widgets/post/style';
 
 interface ContentsProps {
   post: Post;

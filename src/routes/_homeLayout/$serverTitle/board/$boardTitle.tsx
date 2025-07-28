@@ -81,6 +81,7 @@ function RouteComponent() {
       {showDetail && (
         <>
           <SliderBar listWidth={listWidth} setListWidth={setListWidth} containerRef={containerRef} />
+
           <div className={BoardStyle.detailSection} style={{ width: `${100 - listWidth}%` }}>
             <div className={BoardStyle.header}>
               <div className={BoardStyle.headerTitle}>
