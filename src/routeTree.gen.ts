@@ -16,6 +16,8 @@ import { Route as HomeLayoutServerTitleRouteImport } from './routes/_homeLayout/
 import { Route as AuthLayoutRegisterRouteImport } from './routes/_authLayout/register'
 import { Route as AuthLayoutLoginRouteImport } from './routes/_authLayout/login'
 import { Route as HomeLayoutServerTitleChatRoomIdRouteImport } from './routes/_homeLayout/$serverTitle.$chatRoomId'
+import { Route as HomeLayoutServerTitleChatChatRoomIdRouteImport } from './routes/_homeLayout/$serverTitle/chat/$chatRoomId'
+import { Route as HomeLayoutServerTitleBoardBoardIdRouteImport } from './routes/_homeLayout/$serverTitle/board/$boardId'
 import { Route as HomeLayoutServerTitleBoardBoardTitleRouteImport } from './routes/_homeLayout/$serverTitle/board/$boardTitle'
 
 const HomeLayoutRoute = HomeLayoutRouteImport.update({
@@ -52,6 +54,16 @@ const HomeLayoutServerTitleChatRoomIdRoute =
     path: '/$chatRoomId',
     getParentRoute: () => HomeLayoutServerTitleRoute,
   } as any)
+const HomeLayoutServerTitleChatChatRoomIdRoute =
+  HomeLayoutServerTitleChatChatRoomIdRouteImport.update({
+    id: '/chat/$chatRoomId',
+    path: '/chat/$chatRoomId',
+    getParentRoute: () => HomeLayoutServerTitleRoute,
+  } as any)
+const HomeLayoutServerTitleBoardBoardIdRoute =
+  HomeLayoutServerTitleBoardBoardIdRouteImport.update({
+    id: '/board/$boardId',
+    path: '/board/$boardId',
 const HomeLayoutServerTitleBoardBoardTitleRoute =
   HomeLayoutServerTitleBoardBoardTitleRouteImport.update({
     id: '/board/$boardTitle',
@@ -65,6 +77,8 @@ export interface FileRoutesByFullPath {
   '/$serverTitle': typeof HomeLayoutServerTitleRouteWithChildren
   '/': typeof HomeLayoutIndexRoute
   '/$serverTitle/$chatRoomId': typeof HomeLayoutServerTitleChatRoomIdRoute
+  '/$serverTitle/board/$boardId': typeof HomeLayoutServerTitleBoardBoardIdRoute
+  '/$serverTitle/chat/$chatRoomId': typeof HomeLayoutServerTitleChatChatRoomIdRoute
   '/$serverTitle/board/$boardTitle': typeof HomeLayoutServerTitleBoardBoardTitleRoute
 }
 export interface FileRoutesByTo {
@@ -73,6 +87,8 @@ export interface FileRoutesByTo {
   '/$serverTitle': typeof HomeLayoutServerTitleRouteWithChildren
   '/': typeof HomeLayoutIndexRoute
   '/$serverTitle/$chatRoomId': typeof HomeLayoutServerTitleChatRoomIdRoute
+  '/$serverTitle/board/$boardId': typeof HomeLayoutServerTitleBoardBoardIdRoute
+  '/$serverTitle/chat/$chatRoomId': typeof HomeLayoutServerTitleChatChatRoomIdRoute
   '/$serverTitle/board/$boardTitle': typeof HomeLayoutServerTitleBoardBoardTitleRoute
 }
 export interface FileRoutesById {
@@ -84,6 +100,8 @@ export interface FileRoutesById {
   '/_homeLayout/$serverTitle': typeof HomeLayoutServerTitleRouteWithChildren
   '/_homeLayout/': typeof HomeLayoutIndexRoute
   '/_homeLayout/$serverTitle/$chatRoomId': typeof HomeLayoutServerTitleChatRoomIdRoute
+  '/_homeLayout/$serverTitle/board/$boardId': typeof HomeLayoutServerTitleBoardBoardIdRoute
+  '/_homeLayout/$serverTitle/chat/$chatRoomId': typeof HomeLayoutServerTitleChatChatRoomIdRoute
   '/_homeLayout/$serverTitle/board/$boardTitle': typeof HomeLayoutServerTitleBoardBoardTitleRoute
 }
 export interface FileRouteTypes {
@@ -94,6 +112,8 @@ export interface FileRouteTypes {
     | '/$serverTitle'
     | '/'
     | '/$serverTitle/$chatRoomId'
+    | '/$serverTitle/board/$boardId'
+    | '/$serverTitle/chat/$chatRoomId'
     | '/$serverTitle/board/$boardTitle'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -102,6 +122,8 @@ export interface FileRouteTypes {
     | '/$serverTitle'
     | '/'
     | '/$serverTitle/$chatRoomId'
+    | '/$serverTitle/board/$boardId'
+    | '/$serverTitle/chat/$chatRoomId'
     | '/$serverTitle/board/$boardTitle'
   id:
     | '__root__'
@@ -112,6 +134,8 @@ export interface FileRouteTypes {
     | '/_homeLayout/$serverTitle'
     | '/_homeLayout/'
     | '/_homeLayout/$serverTitle/$chatRoomId'
+    | '/_homeLayout/$serverTitle/board/$boardId'
+    | '/_homeLayout/$serverTitle/chat/$chatRoomId'
     | '/_homeLayout/$serverTitle/board/$boardTitle'
   fileRoutesById: FileRoutesById
 }
@@ -171,6 +195,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeLayoutServerTitleChatRoomIdRouteImport
       parentRoute: typeof HomeLayoutServerTitleRoute
     }
+    '/_homeLayout/$serverTitle/chat/$chatRoomId': {
+      id: '/_homeLayout/$serverTitle/chat/$chatRoomId'
+      path: '/chat/$chatRoomId'
+      fullPath: '/$serverTitle/chat/$chatRoomId'
+      preLoaderRoute: typeof HomeLayoutServerTitleChatChatRoomIdRouteImport
+      parentRoute: typeof HomeLayoutServerTitleRoute
+    }
+    '/_homeLayout/$serverTitle/board/$boardId': {
+      id: '/_homeLayout/$serverTitle/board/$boardId'
+      path: '/board/$boardId'
+      fullPath: '/$serverTitle/board/$boardId'
+      preLoaderRoute: typeof HomeLayoutServerTitleBoardBoardIdRouteImport
     '/_homeLayout/$serverTitle/board/$boardTitle': {
       id: '/_homeLayout/$serverTitle/board/$boardTitle'
       path: '/board/$boardTitle'
@@ -197,11 +233,17 @@ const AuthLayoutRouteWithChildren = AuthLayoutRoute._addFileChildren(
 
 interface HomeLayoutServerTitleRouteChildren {
   HomeLayoutServerTitleChatRoomIdRoute: typeof HomeLayoutServerTitleChatRoomIdRoute
+  HomeLayoutServerTitleBoardBoardIdRoute: typeof HomeLayoutServerTitleBoardBoardIdRoute
+  HomeLayoutServerTitleChatChatRoomIdRoute: typeof HomeLayoutServerTitleChatChatRoomIdRoute
   HomeLayoutServerTitleBoardBoardTitleRoute: typeof HomeLayoutServerTitleBoardBoardTitleRoute
 }
 
 const HomeLayoutServerTitleRouteChildren: HomeLayoutServerTitleRouteChildren = {
   HomeLayoutServerTitleChatRoomIdRoute: HomeLayoutServerTitleChatRoomIdRoute,
+  HomeLayoutServerTitleBoardBoardIdRoute:
+    HomeLayoutServerTitleBoardBoardIdRoute,
+  HomeLayoutServerTitleChatChatRoomIdRoute:
+    HomeLayoutServerTitleChatChatRoomIdRoute,
   HomeLayoutServerTitleBoardBoardTitleRoute:
     HomeLayoutServerTitleBoardBoardTitleRoute,
 }

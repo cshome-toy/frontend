@@ -32,8 +32,7 @@ export const channelSelectorHeader = style({
 });
 
 export const channelSelectorList = style({
-  paddingTop: vars.spacing.md,
-  paddingLeft: vars.spacing.sm,
+  // paddingLeft: vars.spacing.sm,
   paddingRight: vars.spacing.sm,
   display: 'flex',
   flexDirection: 'column',
@@ -66,4 +65,27 @@ export const channelSelectorIcon = style({
 
 export const channelSelectorIconActive = style({
   filter: 'brightness(0) invert(1)',
+});
+
+export const categoryHeader = style({
+  all: 'unset',                
+  display: 'flex',
+  alignItems: 'center',
+  gap: vars.spacing.xs,        
+  padding: vars.spacing.sm,
+  cursor: 'pointer',
+  color: vars.colors.subDark,  
+  ':hover': {
+      color: vars.colors.sub,       
+    },
+})
+export const Image = style({
+  width: '20px',
+  height: '20px',
+  marginLeft: '-2px',
+  marginTop: '6px',
+  borderRadius: vars.radius.sm,
+  objectFit: 'cover',
+  objectPosition: 'center',
+  
 });

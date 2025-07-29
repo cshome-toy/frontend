@@ -2,19 +2,21 @@ import { CHANNEL_LIST, BOARD_LIST } from '@/shared/mock';
 import {
   channelSelector,
   channelSelectorHeader,
-  channelSelectorItem,
-  channelSelectorItemActive,
-  channelSelectorIcon,
-  channelSelectorIconActive,
   channelSelectorList,
   channelSelectorWrapper,
+  categoryHeader,
+  Image,
 } from '@/widgets/menu/styles';
 import { useLocation, useNavigate } from '@tanstack/react-router';
 
 export default function ChannelSelector() {
   const current = useLocation().pathname;
-  const title = current.split('/')[1];
+  const serverId = current.split('/')[1];
   const navigate = useNavigate();
+  const [hovered, setHovered] = useState(false);
+  const categoryTypes = ['board', 'chat'] as const;
+  const grouped: Record<CategoryType, ChannelCategory | undefined> = CHANNEL_LIST[serverId] ?? {};
+  const [toggleState, setToggleState] = useState<Record<string, boolean>>({});
 
   const channelList = CHANNEL_LIST[title];
   const boardList = BOARD_LIST[title];

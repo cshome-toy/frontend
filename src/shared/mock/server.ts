@@ -1,3 +1,5 @@
+import type { ChannelCategory } from '@/shared/types/channelCategory';
+import type { CategoryType } from '@/shared/types/category';
 export const SERVER = {
   title: 'cshome',
   image: '/images/image-server.png',
@@ -21,7 +23,7 @@ export const CHANNEL_LIST: Record<string, { id: string; title: string }[]> = {
       id: '4',
       title: '잡담',
     },
-  ],
+  },
 };
 
 export const BOARD_LIST: Record<string, { id: string; title: string }[]> = {
