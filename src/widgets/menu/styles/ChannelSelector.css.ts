@@ -10,6 +10,7 @@ export const channelSelectorWrapper = style({
 });
 
 export const channelSelector = style({
+  margin: '0',
   width: '100%',
   height: calc.subtract('100%', '32px'),
   backgroundColor: vars.colors.mainDark,
@@ -32,14 +33,16 @@ export const channelSelectorHeader = style({
 });
 
 export const channelSelectorList = style({
-  // paddingLeft: vars.spacing.sm,
-  paddingRight: vars.spacing.sm,
+  padding: vars.spacing.sm,
   display: 'flex',
   flexDirection: 'column',
   gap: '2px',
 });
 
 export const channelSelectorItem = style({
+  outline: 'none',
+  all: 'unset',
+  cursor: 'pointer',
   display: 'flex',
   alignItems: 'center',
   gap: vars.spacing.sm,
@@ -68,24 +71,34 @@ export const channelSelectorIconActive = style({
 });
 
 export const categoryHeader = style({
-  all: 'unset',                
+  outline: 'none',
+  all: 'unset',
   display: 'flex',
+  placeItems: 'center',
+  fontSize: vars.font.size.sm,
+  fontWeight: vars.font.weight.bold,
   alignItems: 'center',
-  gap: vars.spacing.xs,        
-  padding: vars.spacing.sm,
+  gap: vars.spacing.xs,
+  padding: vars.spacing.xs,
+  marginLeft: vars.spacing.xs,
   cursor: 'pointer',
-  color: vars.colors.subDark,  
+  color: vars.colors.subDark,
   ':hover': {
-      color: vars.colors.sub,       
-    },
-})
-export const Image = style({
-  width: '20px',
-  height: '20px',
-  marginLeft: '-2px',
-  marginTop: '6px',
+    color: vars.colors.sub,
+  },
+});
+
+export const categoryHeaderIcon = style({
+  width: vars.font.size.sm,
+  height: vars.font.size.sm,
   borderRadius: vars.radius.sm,
   objectFit: 'cover',
   objectPosition: 'center',
-  
+  filter:
+    'brightness(0) saturate(100%) invert(48%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%)',
+  selectors: {
+    [`${categoryHeader}:hover &`]: {
+      filter: 'brightness(0) invert(1)',
+    },
+  },
 });
