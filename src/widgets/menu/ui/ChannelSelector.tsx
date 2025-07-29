@@ -1,8 +1,4 @@
-import { useState } from 'react';
-import { CHANNEL_LIST } from '@/shared/mock/server';
-import type { ChannelCategory } from '@/shared/types/channelCategory';
-import type { CategoryType } from '@/shared/types/category';
-import ChannelButton from '@/widgets/menu/ui/ChannelButton';
+import { CHANNEL_LIST, BOARD_LIST } from '@/shared/mock';
 import {
   channelSelector,
   channelSelectorHeader,
@@ -22,59 +18,53 @@ export default function ChannelSelector() {
   const grouped: Record<CategoryType, ChannelCategory | undefined> = CHANNEL_LIST[serverId] ?? {};
   const [toggleState, setToggleState] = useState<Record<string, boolean>>({});
 
-  const toggleCategory = (category: string) => {
-    setToggleState((prev) => ({
-      ...prev,
-      [category]: !prev[category],
-    }));
-  };
+  const channelList = CHANNEL_LIST[title];
+  const boardList = BOARD_LIST[title];
 
   return (
     <div className={channelSelectorWrapper}>
       <div className={channelSelector}>
-        {serverId && <div className={channelSelectorHeader}>{serverId}</div>}
-
-        {(categoryTypes).map((type) => {
-          const category = grouped[type];
-          if (!category) return null;
-
-          const activeChannelId = current.split('/').pop()!;
-          const hasActive = category.items.some((ch) => ch.id === activeChannelId);
-          const isOpen = !!toggleState[type];
-
-          const channelsToShow = isOpen ? category.items : hasActive ? category.items.filter((ch) => ch.id === activeChannelId): [];
-
-          return (
-            <div key={type}>
-              <button className={categoryHeader} onClick={() => toggleCategory(type)}>
-                <span>{category.label}</span>
-                <span onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-                  <img className={Image}src={isOpen ? hovered ? '/icons/icon-arrow(Down_sub).svg' : '/icons/icon-arrow(down_subDark).svg'
-                                                    : hovered? '/icons/icon-arrow(Right_sub).svg': '/icons/icon-arrow(Right_subDark).svg'} 
-                                                    alt="arrow"/>
-                </span>
-
-              </button>
-
-              {channelsToShow.length > 0 && (
-                <div className={channelSelectorList}>
-                  {channelsToShow.map(({ id, title }) => {
-                    const isActive = id === activeChannelId;
-                    return (
-                      <ChannelButton
-                        key={id}
-                        id={id}
-                        title={title}
-                        isActive={isActive}
-                        onClick={() => navigate({ to: `/${serverId}/${type}/${id}` })}
-                      />
-                    );
-                  })}
-                </div>
-              )}
-            </div>
-          );
-        })}
+        {title && <div className={channelSelectorHeader}>{title}</div>}
+        <div className={channelSelectorList}>
+          {boardList &&
+            boardList.map(({ id, title: boardTitle }) => {
+              const isActive = current.includes(id);
+              return (
+                <button
+                  className={`${channelSelectorItem} ${isActive ? channelSelectorItemActive : ''}`}
+                  key={id}
+                  onClick={() => navigate({ to: `${title}/board/${boardTitle}` })}
+                >
+                  <img
+                    src='/icons/icon-board.svg'
+                    alt='channel'
+                    className={`${channelSelectorIcon} ${isActive ? channelSelectorIconActive : ''}`}
+                    style={{ width: '20px', height: '20px' }}
+                  />
+                  <span>{boardTitle}</span>
+                </button>
+              );
+            })}
+          {channelList &&
+            channelList.map(({ id, title: channelTitle }) => {
+              const isActive = current.includes(id);
+              return (
+                <button
+                  className={`${channelSelectorItem} ${isActive ? channelSelectorItemActive : ''}`}
+                  key={id}
+                  onClick={() => navigate({ to: `${title}/${id}` })}
+                >
+                  <img
+                    src='/icons/icon-chat.svg'
+                    alt='channel'
+                    className={`${channelSelectorIcon} ${isActive ? channelSelectorIconActive : ''}`}
+                    style={{ width: '20px', height: '20px' }}
+                  />
+                  <span>{channelTitle}</span>
+                </button>
+              );
+            })}
+        </div>
       </div>
     </div>
   );

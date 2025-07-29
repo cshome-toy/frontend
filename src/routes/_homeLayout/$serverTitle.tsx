@@ -5,9 +5,5 @@ export const Route = createFileRoute('/_homeLayout/$serverTitle')({
 });
 
 function RouteComponent() {
-  return (
-    <div>
-      <Outlet />
-    </div>
-  );
+  return <Outlet />;
 }

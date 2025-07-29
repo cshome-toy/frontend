@@ -5,7 +5,7 @@ import { Outlet, createFileRoute } from '@tanstack/react-router';
 export const Route = createFileRoute('/_authLayout')({
   component: () => (
     <div className={container}>
-      <div style={{ display: 'relative', overflow: 'hidden', height: '100vh' }}>
+      <div style={{ position: 'relative', overflow: 'hidden', height: '100vh' }}>
         <img src='images/image-auth.svg' alt='auth-image' className={authBackground} />
         <img src='icons/icon-logowithtext.svg' alt='logo' className={authLogo} />
         <div className={authContainerWrapper}>

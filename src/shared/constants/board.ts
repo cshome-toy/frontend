@@ -1,0 +1,17 @@
+export const INPUT_CONFIG = {
+  MAX_HEIGHT: 100,
+  SCROLL_DELAY: 0,
+  DEFAULT_ROWS: 1,
+  MAX_CHARACTERS: 1000,
+} as const;
+
+export const FORM_CONFIG = {
+  MAX_TITLE_SIZE: 100,
+  MAX_CONTENT_SIZE: 1000,
+  MAX_TEXTAREA_HEIGHT: 200,
+} as const;
+
+export const LAYOUT_CONFIG = {
+  FULL_WIDTH: 100,
+  SPLIT_LIST_WIDTH: 61,
+} as const;
