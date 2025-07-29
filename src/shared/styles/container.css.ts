@@ -12,7 +12,7 @@ export const container = style({
 
 export const mainContent = style({
   width: '100%',
-  height: calc.subtract('100vh', '33px'),
+  height: calc.subtract('100vh', '32px'),
   backgroundColor: vars.colors.mainLight,
   borderTop: `1px solid ${vars.colors.mainBorder}`,
 });
