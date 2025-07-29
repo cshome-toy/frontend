@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import type { Message } from '@/shared/types/message'; // 너희가 사용하는 타입 이름에 따라 수정
+import type { Message } from '@/widgets/chat/types';
 import {
   messageItem,
   userInfoImage,
@@ -9,7 +9,7 @@ import {
   meta,
   username,
   timestamp,
-} from '@/widgets/chat/styles/MessageItem.css.ts'; 
+} from '@/widgets/chat/styles/MessageItem.css.ts';
 
 interface MessageItemProps {
   msg: Message;
