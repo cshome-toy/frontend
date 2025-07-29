@@ -1,4 +1,4 @@
-import { CHANNEL_LIST } from '@/shared/mock';
+import { CHANNEL_LIST, BOARD_LIST } from '@/shared/mock';
 import {
   channelSelector,
   channelSelectorHeader,
@@ -17,12 +17,32 @@ export default function ChannelSelector() {
   const navigate = useNavigate();
 
   const channelList = CHANNEL_LIST[title];
+  const boardList = BOARD_LIST[title];
 
   return (
     <div className={channelSelectorWrapper}>
       <div className={channelSelector}>
         {title && <div className={channelSelectorHeader}>{title}</div>}
         <div className={channelSelectorList}>
+          {boardList &&
+            boardList.map(({ id, title: boardTitle }) => {
+              const isActive = current.includes(id);
+              return (
+                <button
+                  className={`${channelSelectorItem} ${isActive ? channelSelectorItemActive : ''}`}
+                  key={id}
+                  onClick={() => navigate({ to: `${title}/board/${boardTitle}` })}
+                >
+                  <img
+                    src='/icons/icon-board.svg'
+                    alt='channel'
+                    className={`${channelSelectorIcon} ${isActive ? channelSelectorIconActive : ''}`}
+                    style={{ width: '20px', height: '20px' }}
+                  />
+                  <span>{boardTitle}</span>
+                </button>
+              );
+            })}
           {channelList &&
             channelList.map(({ id, title: channelTitle }) => {
               const isActive = current.includes(id);

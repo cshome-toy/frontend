@@ -1,20 +1,11 @@
-//  @ts-check
-
-import js from '@eslint/js'
-import tseslint from '@typescript-eslint/eslint-plugin'
-import tsparser from '@typescript-eslint/parser'
+import js from '@eslint/js';
+import tseslint from '@typescript-eslint/eslint-plugin';
+import tsparser from '@typescript-eslint/parser';
+import react from '@eslint-react/eslint-plugin';
 
 export default [
   {
-    ignores: [
-      'dist/**',
-      'node_modules/**',
-      'build/**',
-      'coverage/**',
-      '*.min.js',
-      '*.bundle.js',
-      '*.chunk.js',
-    ],
+    ignores: ['dist/**', 'node_modules/**', 'build/**', 'coverage/**', '*.min.js', '*.bundle.js', '*.chunk.js'],
   },
   js.configs.recommended,
   {
@@ -24,6 +15,7 @@ export default [
       parserOptions: {
         project: './tsconfig.json',
         tsconfigRootDir: import.meta.dirname,
+        ecmaFeatures: { jsx: true },
       },
       globals: {
         document: 'readonly',
@@ -55,15 +47,19 @@ export default [
         self: 'readonly',
         process: 'readonly',
         __REACT_DEVTOOLS_GLOBAL_HOOK__: 'readonly',
+        React: 'readonly',
       },
     },
     plugins: {
       '@typescript-eslint': tseslint,
+      '@eslint-react': react,
     },
     rules: {
       ...tseslint.configs.recommended.rules,
       'import/no-cycle': 'off',
       'import/no-unresolved': 'off',
+      '@eslint-react/react-in-jsx-scope': 'off',
+      '@typescript-eslint/no-explicit-any': 'warn',
     },
   },
   {
@@ -91,4 +87,4 @@ export default [
       'import/no-unresolved': 'off',
     },
   },
-]
+];

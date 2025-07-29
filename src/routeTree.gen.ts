@@ -16,6 +16,7 @@ import { Route as HomeLayoutServerTitleRouteImport } from './routes/_homeLayout/
 import { Route as AuthLayoutRegisterRouteImport } from './routes/_authLayout/register'
 import { Route as AuthLayoutLoginRouteImport } from './routes/_authLayout/login'
 import { Route as HomeLayoutServerTitleChatRoomIdRouteImport } from './routes/_homeLayout/$serverTitle.$chatRoomId'
+import { Route as HomeLayoutServerTitleBoardBoardTitleRouteImport } from './routes/_homeLayout/$serverTitle/board/$boardTitle'
 
 const HomeLayoutRoute = HomeLayoutRouteImport.update({
   id: '/_homeLayout',
@@ -51,6 +52,12 @@ const HomeLayoutServerTitleChatRoomIdRoute =
     path: '/$chatRoomId',
     getParentRoute: () => HomeLayoutServerTitleRoute,
   } as any)
+const HomeLayoutServerTitleBoardBoardTitleRoute =
+  HomeLayoutServerTitleBoardBoardTitleRouteImport.update({
+    id: '/board/$boardTitle',
+    path: '/board/$boardTitle',
+    getParentRoute: () => HomeLayoutServerTitleRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/login': typeof AuthLayoutLoginRoute
@@ -58,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/$serverTitle': typeof HomeLayoutServerTitleRouteWithChildren
   '/': typeof HomeLayoutIndexRoute
   '/$serverTitle/$chatRoomId': typeof HomeLayoutServerTitleChatRoomIdRoute
+  '/$serverTitle/board/$boardTitle': typeof HomeLayoutServerTitleBoardBoardTitleRoute
 }
 export interface FileRoutesByTo {
   '/login': typeof AuthLayoutLoginRoute
@@ -65,6 +73,7 @@ export interface FileRoutesByTo {
   '/$serverTitle': typeof HomeLayoutServerTitleRouteWithChildren
   '/': typeof HomeLayoutIndexRoute
   '/$serverTitle/$chatRoomId': typeof HomeLayoutServerTitleChatRoomIdRoute
+  '/$serverTitle/board/$boardTitle': typeof HomeLayoutServerTitleBoardBoardTitleRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -75,6 +84,7 @@ export interface FileRoutesById {
   '/_homeLayout/$serverTitle': typeof HomeLayoutServerTitleRouteWithChildren
   '/_homeLayout/': typeof HomeLayoutIndexRoute
   '/_homeLayout/$serverTitle/$chatRoomId': typeof HomeLayoutServerTitleChatRoomIdRoute
+  '/_homeLayout/$serverTitle/board/$boardTitle': typeof HomeLayoutServerTitleBoardBoardTitleRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -84,6 +94,7 @@ export interface FileRouteTypes {
     | '/$serverTitle'
     | '/'
     | '/$serverTitle/$chatRoomId'
+    | '/$serverTitle/board/$boardTitle'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/login'
@@ -91,6 +102,7 @@ export interface FileRouteTypes {
     | '/$serverTitle'
     | '/'
     | '/$serverTitle/$chatRoomId'
+    | '/$serverTitle/board/$boardTitle'
   id:
     | '__root__'
     | '/_authLayout'
@@ -100,6 +112,7 @@ export interface FileRouteTypes {
     | '/_homeLayout/$serverTitle'
     | '/_homeLayout/'
     | '/_homeLayout/$serverTitle/$chatRoomId'
+    | '/_homeLayout/$serverTitle/board/$boardTitle'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -158,6 +171,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeLayoutServerTitleChatRoomIdRouteImport
       parentRoute: typeof HomeLayoutServerTitleRoute
     }
+    '/_homeLayout/$serverTitle/board/$boardTitle': {
+      id: '/_homeLayout/$serverTitle/board/$boardTitle'
+      path: '/board/$boardTitle'
+      fullPath: '/$serverTitle/board/$boardTitle'
+      preLoaderRoute: typeof HomeLayoutServerTitleBoardBoardTitleRouteImport
+      parentRoute: typeof HomeLayoutServerTitleRoute
+    }
   }
 }
 
@@ -177,10 +197,13 @@ const AuthLayoutRouteWithChildren = AuthLayoutRoute._addFileChildren(
 
 interface HomeLayoutServerTitleRouteChildren {
   HomeLayoutServerTitleChatRoomIdRoute: typeof HomeLayoutServerTitleChatRoomIdRoute
+  HomeLayoutServerTitleBoardBoardTitleRoute: typeof HomeLayoutServerTitleBoardBoardTitleRoute
 }
 
 const HomeLayoutServerTitleRouteChildren: HomeLayoutServerTitleRouteChildren = {
   HomeLayoutServerTitleChatRoomIdRoute: HomeLayoutServerTitleChatRoomIdRoute,
+  HomeLayoutServerTitleBoardBoardTitleRoute:
+    HomeLayoutServerTitleBoardBoardTitleRoute,
 }
 
 const HomeLayoutServerTitleRouteWithChildren =
