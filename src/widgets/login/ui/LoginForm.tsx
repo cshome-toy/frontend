@@ -7,12 +7,26 @@ import FormInput from '@/shared/components/FormInput';
 import Button from '@/shared/components/Button';
 import { useForm } from 'react-hook-form';
 import type { Login } from '../types';
+import { useSubmitLogin } from '../api';
+import { useNavigate } from '@tanstack/react-router';
+import { setCookie } from '@/shared/utils';
 
 export default function LoginForm() {
   const { register, handleSubmit } = useForm<Login>();
+  const { mutate: login } = useSubmitLogin();
+  const navigate = useNavigate();
 
   const onSubmit = (data: Login) => {
-    console.log(data);
+    login(data, {
+      onSuccess: (data) => {
+        setCookie('accessToken', data.accessToken, 7);
+        setCookie('refreshToken', data.refreshToken, 7);
+        navigate({ to: PATH.HOME });
+      },
+      onError: () => {
+        alert('로그인에 실패했어요!');
+      },
+    });
   };
 
   return (
