@@ -15,18 +15,12 @@ import {
   chatWelcomeShape,
   chatWelcomeIamge,
 } from '@/widgets/chat/styles/chatRoom.css.ts';
-import { CHANNEL_LIST } from '@/shared/mock/server';
+import { CHAT_LIST } from '@/shared/mock/server';
 import { USER } from '@/shared/mock/user';
 import MessageItem from '@/widgets/chat/ui/MessageItem';
-import type { Message } from '@/shared/types/message';
+import type { Message } from '@/widgets/chat/types';
 
-export default function ChatRoom({
-  serverTitle,
-  chatRoomId,
-}: {
-  serverTitle: string;
-  chatRoomId: string;
-}) {
+export default function ChatRoom({ serverTitle, chatRoomId }: { serverTitle: string; chatRoomId: string }) {
   const [messages, setMessages] = useState<Message[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
   const messageListRef = useRef<HTMLDivElement>(null);
@@ -36,13 +30,13 @@ export default function ChatRoom({
   }, [chatRoomId]);
 
   useEffect(() => {
-  setTimeout(() => {
-    const el = messageListRef.current;
-    if (el) {
-      el.scrollTop = el.scrollHeight;
-    }
-  }, 0);
-}, [messages]);
+    setTimeout(() => {
+      const el = messageListRef.current;
+      if (el) {
+        el.scrollTop = el.scrollHeight;
+      }
+    }, 0);
+  }, [messages]);
 
   const handleSend = () => {
     const txt = inputRef.current?.value.trim();
@@ -73,9 +67,7 @@ export default function ChatRoom({
   const extractDate = (timestamp: string) => {
     return timestamp.split('-오전')[0]?.split('-오후')[0] ?? '';
   };
-  const channel = CHANNEL_LIST[serverTitle]?.chat.items.find(
-    (c) => c.id === chatRoomId
-  );
+  const channel = CHAT_LIST[serverTitle]?.find((c) => c.id === chatRoomId);
   const title = channel?.title ?? chatRoomId;
 
   return (
@@ -90,7 +82,7 @@ export default function ChatRoom({
       <div className={chatMessageWrapper} ref={messageListRef}>
         <div className={chatWelcome}>
           <div className={chatWelcomeShape}>
-            <img src="/icons/icon-chat.svg" alt="channel" className={chatWelcomeIamge}/>
+            <img src='/icons/icon-chat.svg' alt='channel' className={chatWelcomeIamge} />
           </div>
           <p className={chatWelcomeTitle}>#{title}에 오신 걸 환영합니다!</p>
           <p className={chatWelcomeSub}>#{title} 채널의 시작이에요.</p>
@@ -98,7 +90,7 @@ export default function ChatRoom({
 
         {messages.map((msg, i) => {
           const prev = messages[i - 1];
-          const sameGroup =i > 0 && prev.user.name === msg.user.name && prev.timestamp === msg.timestamp;
+          const sameGroup = i > 0 && prev.user.name === msg.user.name && prev.timestamp === msg.timestamp;
           const currentDate = extractDate(msg.timestamp);
           const prevDate = prev ? extractDate(prev.timestamp) : null;
           const isNewDate = currentDate !== prevDate;
